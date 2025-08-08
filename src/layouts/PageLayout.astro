@@ -17,9 +17,15 @@ const { title, description, image, slug } = Astro.props;
   <head>
     <Head title={`${title} | ${SITE.NAME}`} description={description} image={image} slug={slug} />
   </head>
-  <body class="font-sans antialiased text-black/50 dark:text-white/75 size-full inline-table bg-stone-100 dark:bg-stone-900">
-    <main>
-      <slot />
-    </main>
+  <body class="font-sans antialiased text-black/50 dark:text-white/75 size-full inline-table bg-gradient-to-br from-stone-50 via-stone-100 to-stone-300 dark:from-stone-900 dark:via-stone-800 dark:to-stone-700 relative overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute inset-0 bg-gradient-to-br from-stone-100/30 via-transparent to-stone-200/30 dark:from-stone-800/30 dark:via-transparent dark:to-stone-700/30"></div>
+    <div class="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-stone-200/20 to-transparent rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-stone-300/20 to-transparent rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+    <div class="relative z-10">
+      <main>
+        <slot />
+      </main>
+    </div>
   </body>
 </html>
