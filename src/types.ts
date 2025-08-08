@@ -3,6 +3,8 @@ export type Site = {
   EMAIL: string;
   AUTHOR: string;
   IMAGE: string;
+  "DESCRIPTION-es": string;
+  "DESCRIPTION-en": string;
 };
 
 export type Metadata = {

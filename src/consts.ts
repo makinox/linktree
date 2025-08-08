@@ -4,7 +4,9 @@ export const SITE: Site = {
   NAME: "Links",
   AUTHOR: "Jesús Bossa",
   EMAIL: "x@jesusbossa.dev",
-  IMAGE: "https://github.com/makinox/storageGarage/blob/main/images/general/me.jpeg?raw=true"
+  IMAGE: "https://github.com/makinox/storageGarage/blob/main/images/general/me.jpeg?raw=true",
+  "DESCRIPTION-es": "Apasionado por la tecnología y la filosofía",
+  "DESCRIPTION-en": "Passionate about technology and philosophy"
 };
 
 export const HOME: Metadata = {

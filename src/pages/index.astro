@@ -1,10 +1,11 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container/Container.astro";
-import { HOME, SITE } from "@consts";
 import Footer from "@components/Footer/Footer.astro";
 import Image from "astro/components/Image.astro";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { getPreferredLanguage } from "@i18n/utils";
+import { HOME, SITE } from "@consts";
 
 type LinkType = {
 	"title-es": string;
@@ -16,6 +17,8 @@ type LinkType = {
 		url: string;
 	}[];
 }
+
+const userLang = getPreferredLanguage(Astro.request);
 
 const links = (await (await fetch(import.meta.env.PORTFOLIO_SOURCE)).json()).links as Array<LinkType> ;
 ---
@@ -30,13 +33,15 @@ const links = (await (await fetch(import.meta.env.PORTFOLIO_SOURCE)).json()).lin
         <h1 class="text-3xl max-w-2xl mx-auto font- font-serif">
           {SITE.AUTHOR}
         </h1>
-				<p>Apasionado por la tecnología y la filosofía</p>
+				<p>{SITE[`DESCRIPTION-${userLang}`]}</p>
       </div>
 
 			<div>
 				{links.map((link) => (
 					<article class="pb-2">
-						<a href={link.url} target="_blank" class="btn btn-info btn-outline w-full rounded-full">{link["title-es"]}</a>
+						<a href={link.url} target="_blank" class="btn btn-info btn-outline w-full rounded-full">
+							{link[`title-${userLang}`]}
+						</a>
 						<ul>
 							{link?.sections?.map((section) => (
 								<li class="flex items-center gap-2 my-4 box-border">
@@ -45,7 +50,7 @@ const links = (await (await fetch(import.meta.env.PORTFOLIO_SOURCE)).json()).lin
 										<div class="status status-info my-2"></div>
 									</div>
 									<a href={section.url} target="_blank" class="link-hover transition-all duration-200 ease-in-out flex items-center gap-2 hover:text-info">
-										<span>{section["title-es"]}</span>
+										<span>{section[`title-${userLang}`]}</span>
 										<FaExternalLinkAlt className="size-3" />
 									</a>
 								</li>
@@ -54,7 +59,6 @@ const links = (await (await fetch(import.meta.env.PORTFOLIO_SOURCE)).json()).lin
 					</article>
 				))}
 			</div>
-      
 
     </div>
   </Container>
