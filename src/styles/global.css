@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: Inter;
+  --font-serif: Lora;
+}
+
+html {
+  overflow-y: scroll;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+.animate {
+  @apply opacity-0 translate-y-3;
+  @apply transition-all duration-700 ease-out;
+}
+
+.animate div p {
+  margin: 0;
+  @apply text-xs mt-2 pb-1 border-b border-black/5;
+}
+
+.animate :where(h2 + *):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  margin: 0;
+}
+
+.animate.show {
+  @apply opacity-100 translate-y-0;
+}

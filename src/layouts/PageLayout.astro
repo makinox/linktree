@@ -1,0 +1,27 @@
+---
+import Head from "@components/Head/Head.astro";
+import Header from "@components/Header/Header.astro";
+import { SITE } from "@consts";
+
+type Props = {
+  title: string;
+  description: string;
+  image?: string;
+  slug?: string;
+};
+
+const { title, description, image, slug } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="size-full">
+  <head>
+    <Head title={`${title} | ${SITE.NAME}`} description={description} image={image} slug={slug} />
+  </head>
+  <body class="font-sans antialiased text-black/50 dark:text-white/75 size-full inline-table bg-stone-100 dark:bg-stone-900">
+    <Header />
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
