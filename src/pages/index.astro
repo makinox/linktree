@@ -1,6 +1,7 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container/Container.astro";
+import { MdOutlineMailOutline } from "react-icons/md";
 import Footer from "@components/Footer/Footer.astro";
 import Image from "astro/components/Image.astro";
 import { FaExternalLinkAlt } from "react-icons/fa";
@@ -37,10 +38,14 @@ const links = (await (await fetch(import.meta.env.PORTFOLIO_SOURCE)).json()).lin
       </div>
 
 			<div>
-				{links.map((link) => (
+				{links.map((link, index) => {
+					const isContact = index === 2
+
+					return (
 					<article class="pb-2">
 						<a href={link.url} target="_blank" class="btn btn-info btn-outline w-full rounded-full">
-							{link[`title-${userLang}`]}
+							<span>{link[`title-${userLang}`]}</span>
+							{isContact ? <MdOutlineMailOutline /> : <FaExternalLinkAlt className="size-3" />}
 						</a>
 						<ul>
 							{link?.sections?.map((section) => (
@@ -57,7 +62,8 @@ const links = (await (await fetch(import.meta.env.PORTFOLIO_SOURCE)).json()).lin
 							))}
 						</ul>
 					</article>
-				))}
+				)
+				})}
 			</div>
 
     </div>
