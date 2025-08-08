@@ -2,6 +2,7 @@ export type Site = {
   NAME: string;
   EMAIL: string;
   AUTHOR: string;
+  IMAGE: string;
 };
 
 export type Metadata = {

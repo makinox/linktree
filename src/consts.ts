@@ -4,6 +4,7 @@ export const SITE: Site = {
   NAME: "Links",
   AUTHOR: "Jesús Bossa",
   EMAIL: "x@jesusbossa.dev",
+  IMAGE: "https://github.com/makinox/storageGarage/blob/main/images/general/me.jpeg?raw=true"
 };
 
 export const HOME: Metadata = {

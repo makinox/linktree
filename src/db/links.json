@@ -33,6 +33,11 @@
           "url": "https://voib.jesusbossa.dev/blog/el_que_mundo_que_damos_por_sentado"
         }
       ]
+    },
+    {
+      "title-es": "Contactame",
+      "title-en": "Contact me",
+      "url": "mailto:x@jesusbossa.dev"
     }
   ]
 }

@@ -7,17 +7,14 @@ import Container from "@components/Container/Container.astro";
 import { cn } from "@lib/utils";
 
 const classes = {
-  link: cn("group size-8 flex items-center justify-center rounded-full hover:text-info transition-colors duration-300 ease-in-out"),
+  link: cn("flex items-center justify-center text-info hover:text-info-content ease-in-out"),
 };
 ---
 
-<footer class="animate py-5 text-sm mt-auto">
+<footer class="animate pb-5 text-3xl">
   <Container>
-    <div class="flex justify-between items-center">
-      <div>
-        &copy; {new Date().getFullYear()}
-      </div>
-      <div class="flex flex-wrap gap-1 items-center">
+    <div class="flex justify-center items-center">
+      <div class="flex flex-wrap gap-4 items-center">
         <a aria-label="Instagram" href={SOCIALS[0].HREF} class={classes.link} target="_blank">
           <FaInstagram />
         </a>
