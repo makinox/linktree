@@ -7,6 +7,7 @@ import Image from "astro/components/Image.astro";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { getPreferredLanguage } from "@i18n/utils";
 import { HOME, SITE } from "@consts";
+import { cn } from "@lib/utils";
 
 type LinkType = {
 	"title-es": string;
@@ -22,6 +23,10 @@ type LinkType = {
 const userLang = getPreferredLanguage(Astro.request);
 
 const links = (await (await fetch(import.meta.env.PORTFOLIO_SOURCE)).json()).links as Array<LinkType> ;
+
+const classes = {
+	link: cn("link-hover transition-all duration-200 ease-in-out hover:text-info"),
+}
 ---
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
@@ -44,19 +49,15 @@ const links = (await (await fetch(import.meta.env.PORTFOLIO_SOURCE)).json()).lin
 					return (
 					<article class="pb-2">
 						<a href={link.url} target="_blank" class="btn btn-info btn-outline w-full rounded-full">
-							<span>{link[`title-${userLang}`]}</span>
 							{isContact ? <MdOutlineMailOutline /> : <FaExternalLinkAlt className="size-3" />}
+							<span>{link[`title-${userLang}`]}</span>
 						</a>
 						<ul>
 							{link?.sections?.map((section) => (
-								<li class="flex items-center gap-2 my-4 box-border">
-									<div class="inline-grid *:[grid-area:1/1] pl-4">
-										<div class="status status-info my-2 animate-ping"></div>
-										<div class="status status-info my-2"></div>
-									</div>
-									<a href={section.url} target="_blank" class="link-hover transition-all duration-200 ease-in-out flex items-center gap-2 hover:text-info">
+								<li class={cn(classes.link, "flex items-center gap-2 my-4 box-border")}>
+									<FaExternalLinkAlt className="size-3 ml-4" />
+									<a href={section.url} target="_blank">
 										<span>{section[`title-${userLang}`]}</span>
-										<FaExternalLinkAlt className="size-3" />
 									</a>
 								</li>
 							))}
